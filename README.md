@@ -35,38 +35,19 @@ This may take a long time
 
 ## Ubuntu make swapfile. 
 ### The default memory of WSL is 8 G and it is not enough for building.
-STEP 1: check current memory
-```
-sudo swapon --show 
-or
-free -h
-```
-STEP 2: Check disk usage
-```
-df -h 
-```
-STEP 3: Terminate current swapfile process
 ```
 sudo swapoff -a
-```
-STEP 4:
-```
 sudo dd if=/dev/zero of=/swapfile bs=1G count=10 status=progress
-```
-STEP 5: root-only permission
-```
 sudo chmod 600 /swapfile
-```
-STEP 6:
-```
 sudo mkswap /swapfile
-```
-STEP 7:
-```
 sudo swapon /swapfile
-```
-STEP 8:
-```
-sudo swapon --show or 
+sudo swapon --show
 free -h 
+```
+
+## Building
+```
+source build/envsetup.sh
+lunch aosp_oriole-userdebug
+m
 ```
