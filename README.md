@@ -37,7 +37,7 @@ This may take a long time
 ### The default memory of WSL is 8 G and it is not enough for building.
 ```
 sudo swapoff -a
-sudo dd if=/dev/zero of=/swapfile bs=1G count=10 status=progress
+sudo dd if=/dev/zero of=/swapfile bs=1G count=32 status=progress
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
