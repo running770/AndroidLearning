@@ -32,3 +32,38 @@ Run command:
 repo sync
 ```
 This may take a long time
+
+## Ubuntu make swapfile. 
+### The default memory of WSL is 8 G and it is not enough for building.
+STEP 1:
+```
+sudo swapon --show
+```
+STEP 2:
+```
+df -h 
+```
+STEP 3:
+```
+sudo swapoff -a
+```
+STEP 4:
+```
+sudo dd if=/dev/zero of=/swapfile bs=1G count=10 status=progress
+```
+STEP 5: root-only permission
+```
+sudo chmod 600 /swapfile
+```
+STEP 6:
+```
+sudo mkswap /swapfile
+```
+STEP 7:
+```
+sudo swapon /swapfile
+```
+STEP 8:
+```
+sudo swapon --show  / free -h 
+```
