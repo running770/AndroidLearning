@@ -33,8 +33,18 @@ repo sync
 ```
 This may take a long time
 
-## Ubuntu make swapfile. 
+## Ubuntu memory
 ### The default memory of WSL is 8 G and it is not enough for building.
+Create .wslconfig in C:\user\<username>\.wslconfig and added below content:
+```
+[wsl2]
+processors=8
+memory=12GB
+swap=20GB
+```
+memory must be greater than 12 GB, otherwise it would be failed while buding metalava. 
+swap must be greater than 10 GB, otherwise it would be failed while build soong. 
+
 ```
 sudo swapoff -a
 sudo dd if=/dev/zero of=/swapfile bs=1G count=32 status=progress
